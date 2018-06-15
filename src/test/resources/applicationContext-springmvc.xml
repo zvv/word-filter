@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context-3.1.xsd 
+       http://www.springframework.org/schema/mvc 
+       http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+        
+	<context:component-scan base-package="com.dmwsy.platform" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+	<!-- 启动Spring MVC的注解功能， 完成请求和注解POJO的映射 -->
+	<mvc:annotation-driven />
+
+	<mvc:resources location="/css/**" mapping="/css/**"/>
+	<mvc:resources location="/js/**" mapping="/js/**"/>
+	<mvc:resources location="/image/**" mapping="/image/**"/>
+	<!--<mvc:resources location="/swf/**" mapping="/swf/**"/>-->
+
+	<!-- 视图解析器 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 默认值为下面的，所以不用配置 <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> -->
+		<property name="prefix" value="/WEB-INF/modules/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" >  
+    	<property name="defaultEncoding" value="gbk"/> <!-- 默认编码 (ISO-8859-1) -->  
+    	<!--<property name="maxInMemorySize" value="10240"/> 最大内存大小 (10240)-->  
+		<!--<property name="uploadTempDir" value="/upload/"/>  上传后的目录名 (WebUtils#TEMP_DIR_CONTEXT_ATTRIBUTE) -->  
+		<!-- <property name="maxUploadSize" value="-1"/>  最大文件大小，-1为无限止(-1) -->  
+	</bean>
+</beans>

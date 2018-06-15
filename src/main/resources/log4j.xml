@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!-- 这个是配置全局项目日志，上线初期阶段：为了看系统运行状况Threshold设置info或debug，当系统运行一段时间后，稳定了Threshold设置warn或error，提高日志级别，减少日志输出量 -->
+
+	<appender name="INFO" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${catalina.base}/logs/info.log" />
+		<param name="threshold" value="info" />
+		<param name="encoding" value="UTF-8" />
+		<param name="append" value="true" />
+		<!-- Rollover at midnight each day -->
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] %p [%t] %c | %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="levelMin" value="info" />
+            <param name="levelMax" value="info" />
+        </filter>
+	</appender>
+	
+	<appender name="WARN" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${catalina.base}/logs/warn.log" />
+		<param name="threshold" value="warn" />
+		<param name="encoding" value="UTF-8" />
+		<param name="append" value="true" />
+		<!-- Rollover at midnight each day -->
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] %p [%t] %c | %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="levelMin" value="warn" />
+            <param name="levelMax" value="warn" />
+        </filter>
+	</appender>
+	
+	<appender name="DEBUG" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${catalina.base}/logs/debug.log" />
+		<param name="threshold" value="debug" />
+		<param name="encoding" value="UTF-8" />
+		<param name="append" value="true" />
+		<!-- Rollover at midnight each day -->
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] %p [%t] %c | %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="levelMin" value="debug" />
+            <param name="levelMax" value="debug" />
+        </filter>
+	</appender>
+
+  <appender name="ERROR" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${catalina.base}/logs/catalina.out" />
+		<param name="threshold" value="error" />
+		<param name="encoding" value="UTF-8" />
+		<param name="append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] %p [%t] %c | %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<param name="threshold" value="info" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{dd HH:mm:ss,SSS\} %-5p] [%t] %c{2\} - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- name:debug -->
+	<!-- 	<appender name="DEBUG" class="org.apache.log4j.DailyRollingFileAppender">
+		File: 日志文件存放路径
+		<param name="File" value="${catalina.base}/logs/debug/debug.log" />
+		Append: 追加模式
+		<param name="Append" value="true" />
+		Threshold: 打印日志级别 debug、info、warn、error
+		<param name="Threshold" value="debug" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="encoding" value="UTF-8" />
+		DatePattern: 日志分割 错误日志以小时来分割
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss:SSS} %p [%t] %c | %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="levelMin" value="debug" />
+            <param name="levelMax" value="debug" />
+        </filter>
+	</appender>
+ -->
+	<!-- <appender name="sqlLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		File: 日志文件存放路径
+		<param name="File" value="${catalina.base}/logs/sql/sql.log" />
+		<param name="Append" value="true" />
+		Threshold设置为info级别
+		<param name="Threshold" value="info" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+		<param name="encoding" value="UTF-8" />
+		DatePattern: 日志分割 事件日志以小时来分割
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss:SSS} %p [%t] %c | %m%n" />
+		</layout>
+	</appender> -->
+	
+	<!-- 接入日志系统 start -->
+	<!-- <appender name="rsysLog" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/gomeo2o/logs/applog/dmwys/rsyslog.log" />
+		<param name="threshold" value="info" />
+		<param name="encoding" value="UTF-8" />
+		<param name="append" value="true" />
+		<param name="DatePattern" value="'.'yy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="@cee: %m%n" />
+		</layout>
+	</appender> -->
+	
+<!-- 	<appender name="EVENTLOG" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${catalina.base}/logs/eventlog.log" />
+		<param name="threshold" value="info" />
+		<param name="encoding" value="UTF-8" />
+		<param name="append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss:SSS} %p [%t] %c | %m%n" />
+		</layout>
+	</appender>
+	 -->
+ 	<!-- 请求日志  通过设置level控制是否打印日志，级别大于INFO不打印，小于等于INFO，打印日志-->
+<!--	<logger name="eventlog" additivity="false">
+		<level value="INFO"></level>
+		<appender-ref ref="EVENTLOG" />
+	</logger> -->
+	<!-- 
+	<logger name="cn.com.mx.gome.intensive.log.RsysLog" additivity="false">
+		<level value="INFO"></level>
+		<appender-ref ref="rsysLog" />
+	</logger> -->
+	<!-- 接入日志系统 end -->
+
+	<root>
+		<appender-ref ref="INFO" />
+		<appender-ref ref="WARN" />
+	    <appender-ref ref="ERROR" />
+		<appender-ref ref="DEBUG" />
+	</root>
+
+</log4j:configuration>
