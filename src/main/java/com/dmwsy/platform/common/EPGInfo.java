@@ -7,8 +7,7 @@ import java.util.List;
 
 /**
  * 抽象栏目载体，存储id、类型和名称信息。
- * 
- * @author zhou.ming@kuyun.com
+ *
  * @version 0.0
  */
 public class EPGInfo implements Info, Serializable {

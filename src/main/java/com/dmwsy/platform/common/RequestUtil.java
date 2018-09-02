@@ -7,8 +7,6 @@ import java.util.Date;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author 作者 E-mail:
- * @version 创建时间：2016年12月19日 下午4:14:51 类说明
  */
 
 public class RequestUtil {

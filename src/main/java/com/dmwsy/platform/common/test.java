@@ -1,8 +1,6 @@
 package com.dmwsy.platform.common;
 
 /**
- * @author 作者 E-mail:
- * @version 创建时间：2016年12月21日 下午3:04:06 类说明
  */
 public class test {
     /**
