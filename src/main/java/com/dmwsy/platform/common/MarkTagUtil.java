@@ -13,16 +13,14 @@ import java.util.regex.Pattern;
 public class MarkTagUtil {
 
     /**
-     * @desc 对词进行加标签提取，标签相邻近的优先提取
-     * @param String
-     *            source 原文
-     * @param String
-     *            word 关键词
-     * @param String
-     *            flag0 前标签
-     * @param String
-     *            flag1 后标签
-     * @param int limit 限定返回字符串长度
+     *
+     * @param source
+     * @param word
+     * @param flag0
+     * @param flag1
+     * @param limit
+     * @param cutHead
+     * @return
      */
     public static String still(String source, String word, String flag0, String flag1, int limit, boolean cutHead) {
         word = word.trim().toLowerCase();
@@ -170,7 +168,6 @@ public class MarkTagUtil {
 
     private static class SizeComparator implements Comparator<List<?>> {
 
-        @Override
         public int compare(List<?> arg0, List<?> arg1) {
             if (arg0.size() == arg1.size()) {
                 return 0;
