@@ -40,8 +40,6 @@ public class WordfilterControcoller {
                 e.printStackTrace();
             }
         }
-        System.out.println("=====1======" + request.getParameter("word"));
-        //String word = new String(request.getParameter("word").getBytes("ISO-8859-1"), "UTF-8"); // joo为字符串
         String word = request.getParameter("word");
         // word = ChineseToEnglish.getPingYin(word);
         List<ACAutomaton.Match> list = WordFilterUtil.getGoldenEyes().findSensitive(word);
