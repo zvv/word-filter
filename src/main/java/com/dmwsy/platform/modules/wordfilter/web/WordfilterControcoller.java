@@ -56,6 +56,7 @@ public class WordfilterControcoller {
         json.put("check_status", forbidWordList.size() > 0 ? false : true);
         json.put("message", forbidWordList.size() > 0 ? "注意! 验证文本中含有敏感词!" : "ok! 验证文本无敏感词!");
         json.put("forbid_word_list", forbidWordList);
+        json.put("source_word", word);
         if (forbidWordList != null && forbidWordList.size() > 0) {
             for (String w : forbidWordList) {
                 System.out.println(Joiner.on("|").join(word, w));
