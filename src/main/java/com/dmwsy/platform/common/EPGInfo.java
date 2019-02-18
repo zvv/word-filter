@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * 抽象栏目载体，存储id、类型和名称信息。
  *
  * @version 0.0
  */
