@@ -22,34 +22,6 @@ public class EPGInfo implements Info, Serializable {
     public EPGInfo() {
     }
 
-    /**
-     * 构造函数
-     * 
-     * @param id_
-     *            抽象栏目id
-     * @param caname_
-     *            抽象栏目名称
-     * @param catype_
-     *            抽象栏目类型
-     */
-    public EPGInfo(long id_, String caname_, String catype_) {
-        this.id = id_;
-        this.caname = caname_;
-        this.catype = catype_;
-    }
-
-    public void addTVId(long id) {
-        this.tvlist.add(id);
-    }
-
-    public List getTVId() {
-        return this.tvlist;
-    }
-
-    public void setTVId(ArrayList<Long> list) {
-        this.tvlist = (ArrayList<Long>) list.clone();
-    }
-
     public String toString() {
         String ret = String.format("%d | %s | %s", this.id, this.caname, this.catype);
         for (int i = 0; i < tvlist.size(); ++i) {
@@ -93,19 +65,4 @@ public class EPGInfo implements Info, Serializable {
         this.id = id_;
     }
 
-    public String getCaType() {
-        return this.catype;
-    }
-
-    public void setCaType(String catype_) {
-        this.catype = catype_;
-    }
-
-    public String getCaName() {
-        return this.caname;
-    }
-
-    public void setCaName(String caname_) {
-        this.caname = caname_;
-    }
 }
