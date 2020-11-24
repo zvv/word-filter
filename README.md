@@ -1,4 +1,4 @@
-# AweiWordFilter
+# WordFilter
 
 AweiWordFilter是基于自动机和trie树算法,实现的敏感词过滤
 
